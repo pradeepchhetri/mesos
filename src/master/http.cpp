@@ -535,14 +535,14 @@ const string Master::Http::ISLEADER_HELP = HELP(
 
 Future<Response> Master::Http::health(const Request& request) const
 {
-  if (master->elected()) {
-    return OK();
-  }
+  return OK();
 }
 
 Future<Response> Master::Http::isleader(const Request& request) const
 {
-  return OK();
+  if (master->elected()) {
+    return OK();
+  }
 }
 
 const static string HOSTS_KEY = "hosts";
