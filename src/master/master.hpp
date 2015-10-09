@@ -855,6 +855,10 @@ private:
     process::Future<process::http::Response> health(
         const process::http::Request& request) const;
 
+    // /master/isleader
+    process::Future<process::http::Response> isleader(
+        const process::http::Request& request) const;
+
     // /master/observe
     process::Future<process::http::Response> observe(
         const process::http::Request& request) const;
@@ -913,6 +917,7 @@ private:
 
     const static std::string SCHEDULER_HELP;
     const static std::string HEALTH_HELP;
+    const static std::string ISLEADER_HELP;
     const static std::string OBSERVE_HELP;
     const static std::string REDIRECT_HELP;
     const static std::string ROLES_HELP;

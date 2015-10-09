@@ -527,10 +527,24 @@ const string Master::Http::HEALTH_HELP = HELP(
         "Returns 200 OK iff the Master is healthy.",
         "Delayed responses are also indicative of poor health."));
 
+const string Master::Http::ISLEADER_HELP = HELP(
+    TLDR(
+        "Checks whether Master is currently a leader."),
+    DESCRIPTION(
+        "Returns 200 OK iff the Master is leader."));
 
 Future<Response> Master::Http::health(const Request& request) const
 {
   return OK();
+}
+
+Future<Response> Master::Http::isleader(const Request& request) const
+{
+  if (master->elected()) {
+    return OK();
+  } else {
+    return NotFound();
+  }
 }
 
 const static string HOSTS_KEY = "hosts";
