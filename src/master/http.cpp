@@ -542,6 +542,8 @@ Future<Response> Master::Http::isleader(const Request& request) const
 {
   if (master->elected()) {
     return OK();
+  } else {
+    return NotFound();
   }
 }
 
