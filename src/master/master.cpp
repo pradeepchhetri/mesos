@@ -767,6 +767,11 @@ void Master::initialize()
         [http](const process::http::Request& request) {
           return http.health(request);
         });
+  route("/isleader",
+        Http::ISLEADER_HELP,
+        [http](const process::http::Request& request) {
+          return http.isleader(request);
+        });
   route("/observe",
         Http::OBSERVE_HELP,
         [http](const process::http::Request& request) {
